@@ -10,8 +10,9 @@
             <label for="amountRange" class="block text-sm font-medium text-gray-700 mb-2">Filter by Total Transaction
                 Amount (Minimum):</label>
             <div class="relative">
-                <input type="range" id="amountRange" class="w-full appearance-none bg-gray-200 h-1 rounded-full" min="0"
-                    max="10000" step="100" [(ngModel)]="amountRange" (input)="filterCustomers()">
+                <input type="range" id="amountRange" class="w-full appearance-none bg-gray-200 h-1 rounded-full"
+                    [min]="minAmountRange" [max]="maxAmountRange" step="100" [(ngModel)]="amountRange"
+                    (input)="filterCustomers()">
                 <div class="absolute top-0 right-0 -mt-3 bg-blue-500 text-white px-2 py-1 rounded-lg text-xs">
                     {{ amountRange }}
                 </div>

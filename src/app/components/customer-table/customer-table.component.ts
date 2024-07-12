@@ -17,9 +17,13 @@ export class CustomerTableComponent implements OnInit {
   private _transactions: Transaction[] = [];
   customerTransaction: { [key: string]: number } = {};
 
-  // for filter feature by name or amount
+  // for filter feature by name
   filteredCustomers: Customer[] = [];
   customerSearchInput: string = '';
+
+  // for filter feature amount
+  minAmountRange: number = 0;
+  maxAmountRange: number = 10000;
   amountRange: number = 0;
 
   // displaying a chart for a selected customer
@@ -45,6 +49,8 @@ export class CustomerTableComponent implements OnInit {
   }
 
   private _calculateTransaction(): void {
+    let maxAmount = 0;
+
     this.customerTransaction = this.customers.reduce((amounts, customer) => {
       // to calculate total amount for each customer
       const totalAmount = this._transactions
@@ -52,8 +58,11 @@ export class CustomerTableComponent implements OnInit {
         .reduce((sum, transaction) => sum + transaction.amount, 0);
 
       amounts[customer.id] = totalAmount;
+      maxAmount = Math.max(maxAmount, totalAmount);
       return amounts;
     }, {} as { [key: string]: number });
+
+    this.maxAmountRange = maxAmount;
   }
 
   filterCustomers(): void {
