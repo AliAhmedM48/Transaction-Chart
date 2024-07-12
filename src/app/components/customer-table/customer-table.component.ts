@@ -39,7 +39,7 @@ export class CustomerTableComponent implements OnInit {
     this._DataService.getTransactions().subscribe((data) => {
       this._transactions = data;
       this._calculateTransaction();
-      console.log(this.customerTransaction);
+      // console.log(this.customerTransaction);
       this.filterCustomers(); // Apply initial filter
     });
   }
