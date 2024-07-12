@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private apiUrl = 'https://api-d414.vercel.app';
+  private apiUrl = 'https://transaction-chart-backend.vercel.app';
 
   constructor(private http: HttpClient) {}
 
